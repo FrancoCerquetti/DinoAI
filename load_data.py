@@ -3,7 +3,7 @@ import cv2
 import random
 import numpy as np
 
-def load_data():
+def load_data(resize_x=80, resize_y=80):
     CATEGORIES = ['jump', 'idle']
 
     images = []
@@ -11,7 +11,7 @@ def load_data():
     for category in CATEGORIES:
         for file in os.listdir(f'./{category}'):
             data = cv2.imread(f'./{category}/{file}', cv2.COLOR_BGR2GRAY)
-            resized_data = cv2.resize(data, (80, 80))
+            resized_data = cv2.resize(data, (resize_x, resize_y))
             label = CATEGORIES.index(category)
             images.append([resized_data, label])
 
@@ -24,7 +24,7 @@ def load_data():
         x_train.append(feature)
         y_train.append(label)
         
-    x = np.array(x_train).reshape(-1, 80, 80, 1)
+    x = np.array(x_train).reshape(-1, resize_x, resize_y, 1)
     y = np.array(y_train).reshape(-1, 1)
 
     x = x/255
