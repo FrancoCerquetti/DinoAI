@@ -10,6 +10,7 @@ from matplotlib import pyplot as plt
 
 model = load_model('./model/train.h5')
 sct = mss.mss()
+IMG_SIZE = 100
 
 coord = {
     "top": 250,
@@ -18,17 +19,19 @@ coord = {
     "height": 150
 }
 
+
 def take_shot():
     shot = sct.grab(coord)
     shot = np.array(shot)
     
     img = cv2.cvtColor(shot, cv2.COLOR_RGB2GRAY)
-    img_resized = cv2.resize(img, (85, 85))
-    return img_resized.reshape(1, 85, 85, 1)
-
+    img_resized = cv2.resize(img, (IMG_SIZE, IMG_SIZE))
+    return img_resized.reshape(1, IMG_SIZE, IMG_SIZE, 1)
 def jump():
     print('JUMPING')
-    keyboard.press_and_release('up')
+    keyboard.press('up')
+    time.sleep(0.15)
+    keyboard.release('up')
 
 def idle():
     print('IDLE')
@@ -38,6 +41,4 @@ while True:
     result = model.predict(data)
     prediction = result[0][0]
     
-    jump() if prediction > 0.50 else idle()
-    
-    time.sleep(0.1)
+    jump() if prediction == 1.0 else idle()
