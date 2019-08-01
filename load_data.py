@@ -4,7 +4,7 @@ import random
 import numpy as np
 
 def load_data(resize_x=80, resize_y=80):
-    CATEGORIES = ['jump', 'idle']
+    CATEGORIES = ['idle', 'jump']
 
     images = []
 
