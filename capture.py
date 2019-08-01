@@ -6,15 +6,11 @@ from matplotlib import pyplot as plt
 import time
 import sys
 import random
+import coordinates
 
 sct = mss.mss()
 
-coord = {
-    "top": 250,
-    "left": 600,
-    "width": 300,
-    "height": 150
-}
+coord = coordinates.coord
 
 JUMP_PATH = "jump/"
 IDLE_PATH = "idle/"
