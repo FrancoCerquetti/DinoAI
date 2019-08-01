@@ -18,9 +18,11 @@ sct = mss.mss()
 
 def increment(key):
     coord[key] += FACTOR
+    print(coord)
 
 def decrement(key):
     coord[key] -= FACTOR
+    print(coord)
 
 while True:
     if keyboard.is_pressed('q'):
@@ -56,5 +58,4 @@ while True:
     if keyboard.is_pressed('8'):
         decrement('height')
         
-    print(coord)
     time.sleep(0.1)
