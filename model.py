@@ -10,16 +10,15 @@ x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=0.20)
 
 model = Sequential()
 model.add(Conv2D(256, (5, 5), input_shape=x.shape[1:]))
-model.add(MaxPooling2D(pool_size=(4, 4)))
-
-model.add(Conv2D(128, (4, 4)))
 model.add(MaxPooling2D(pool_size=(3, 3)))
 
-model.add(Conv2D(64, (3, 3)))
+model.add(Conv2D(128, (3, 3)))
 model.add(MaxPooling2D(pool_size=(2, 2)))
 
+model.add(Conv2D(64, (3, 3)))
+
 model.add(Flatten())
-model.add(Dense(128, activation='relu'))
+model.add(Dense(256, activation='relu'))
 model.add(Dropout(0.3))
 
 model.add(Dense(128, activation='relu'))
