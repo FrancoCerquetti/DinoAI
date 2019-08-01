@@ -1,9 +1,12 @@
 import numpy as np
 from keras.models import Sequential
 from keras.layers import Dense, Conv2D, Flatten, MaxPooling2D, Activation, Dropout
+from sklearn.model_selection import train_test_split
 import load_data
 
 x, y = load_data.load_data(85, 85)
+
+x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=0.15)
 
 model = Sequential()
 model.add(Conv2D(128, (5, 5), input_shape=x.shape[1:]))
@@ -19,6 +22,9 @@ model.add(Flatten())
 model.add(Dense(128, activation='relu'))
 model.add(Dropout(0.4))
 
+model.add(Dense(128, activation='relu'))
+model.add(Dropout(0.3))
+
 model.add(Dense(64, activation='relu'))
 model.add(Dropout(0.3))
 
@@ -31,4 +37,6 @@ model.compile(optimizer='adam',
         loss='binary_crossentropy', 
         metrics=['accuracy'])
 
-model.fit(x, y, epochs=15)
+model.fit(x_train, y_train, epochs=20)
+
+model.save('./model/train.h5')

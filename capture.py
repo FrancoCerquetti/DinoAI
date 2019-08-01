@@ -4,13 +4,15 @@ import numpy as np
 import keyboard
 from matplotlib import pyplot as plt
 import time
+import sys
+import random
 
 sct = mss.mss()
 
 coord = {
-    "top": 320,
-    "left": 550,
-    "width": 500,
+    "top": 250,
+    "left": 600,
+    "width": 300,
     "height": 150
 }
 
@@ -27,19 +29,17 @@ while True:
     if keyboard.is_pressed('q'):
         break
 
-    if keyboard.is_pressed('up'):
-        print(f'Saving jump {jump}')
+    if keyboard.is_pressed('up') and ('jump' in sys.argv):
+        print(f'Saving jump')
         img =  cv2.cvtColor(shot, cv2.COLOR_BGR2GRAY)
-        cv2.imwrite(f'{JUMP_PATH}jump_{jump}.jpg', img)
-        jump += 1
+        cv2.imwrite(f'{JUMP_PATH}jump_{random.randrange(1000)}.jpg', img)
         time.sleep(0.8)
         
 
-    if keyboard.is_pressed('i'):
-        print(f'Saving idle {idle}')
+    if keyboard.is_pressed('i') and ('idle' in sys.argv):
+        print(f'Saving idle')
         img =  cv2.cvtColor(shot, cv2.COLOR_BGR2GRAY)
-        cv2.imwrite(f'{IDLE_PATH}idle_{idle}.jpg', img)
-        idle += 1
+        cv2.imwrite(f'{IDLE_PATH}idle_{random.randrange(1000)}.jpg', img)
         time.sleep(0.8)
 
     if keyboard.is_pressed('q'):
