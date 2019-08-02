@@ -15,8 +15,8 @@ coord = coordinates.coord
 JUMP_PATH = "jump/"
 IDLE_PATH = "idle/"
 
-jump = 0
-idle = 0
+RAND_RANGE = 5000
+count = 0
 
 while True:
 
@@ -28,15 +28,19 @@ while True:
     if keyboard.is_pressed('up') and ('jump' in sys.argv):
         print(f'Saving jump')
         img =  cv2.cvtColor(shot, cv2.COLOR_BGR2GRAY)
-        cv2.imwrite(f'{JUMP_PATH}jump_{random.randrange(1000)}.jpg', img)
-        time.sleep(0.8)
+        cv2.imwrite(f'{JUMP_PATH}jump_{random.randrange(RAND_RANGE)}.jpg', img)
+        count += 1
+        print(count)
+        time.sleep(0.3)
         
 
     if keyboard.is_pressed('i') and ('idle' in sys.argv):
         print(f'Saving idle')
         img =  cv2.cvtColor(shot, cv2.COLOR_BGR2GRAY)
-        cv2.imwrite(f'{IDLE_PATH}idle_{random.randrange(1000)}.jpg', img)
-        time.sleep(0.8)
+        cv2.imwrite(f'{IDLE_PATH}idle_{random.randrange(RAND_RANGE)}.jpg', img)
+        count += 1
+        print(count)
+        time.sleep(0.3)
 
     if keyboard.is_pressed('q'):
         break

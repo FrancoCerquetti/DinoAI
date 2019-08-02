@@ -27,7 +27,7 @@ def jump():
     print('JUMPING')
     keyboard.press('up')
     keyboard.release('up')
-    time.sleep(0.15)
+    time.sleep(0.2)
 
 def idle():
     print('IDLE')

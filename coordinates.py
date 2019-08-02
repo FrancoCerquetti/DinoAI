@@ -1,1 +1,1 @@
-coord = {'top': 210, 'left': 690, 'width': 200, 'height': 100}
+coord = {'top': 220, 'left': 690, 'width': 160, 'height': 100}
