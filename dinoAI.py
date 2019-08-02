@@ -26,8 +26,8 @@ def take_shot():
 def jump():
     print('JUMPING')
     keyboard.press('up')
-    time.sleep(0.15)
     keyboard.release('up')
+    time.sleep(0.15)
 
 def idle():
     print('IDLE')

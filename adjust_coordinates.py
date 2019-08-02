@@ -4,15 +4,11 @@ from matplotlib import pyplot as plt
 import numpy as np
 import cv2
 import time
+import coordinates
 
 FACTOR = 10
 
-coord = {
-    'top': 100,
-    'left': 100,
-    'width': 100,
-    'height': 100
-}
+coord = coordinates.coord
 
 sct = mss.mss()
 
