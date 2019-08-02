@@ -33,8 +33,11 @@ def idle():
     print('IDLE')
 
 while True:
+    if keyboard.is_pressed('q'):
+        break
+
     data = take_shot()
     result = model.predict(data)
     prediction = result[0][0]
-    
+
     jump() if prediction == 1.0 else idle()
